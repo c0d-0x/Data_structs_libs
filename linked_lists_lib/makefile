@@ -26,6 +26,7 @@ $(OBJFILES): $(CFILES)
 	$(CC) $(CFLAGS) $(CGCV) $(PGFLAG) -c $^ 
 
 clean:
-	rm $(BIN) $(OBJFILES) $(GCOVFILES) $(PGFILES)  
+	rm $(BIN)* $(OBJFILES) $(GCOVFILES) $(PGFILES)  
+
 start:
-	 $(BIN)
+		 $(BIN)
