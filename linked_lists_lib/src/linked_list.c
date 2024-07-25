@@ -94,9 +94,9 @@ node_t *break_tail(node_t **head) {
 }
 
 node_t *delete_by_position(node_t **head, size_t position) {
-/**
-* The node being deleted is returned to be freed by the caller.
-*/
+  /**
+   * The node being deleted is returned to be freed by the caller.
+   */
   if ((*head) == NULL) {
     return NULL;
   }

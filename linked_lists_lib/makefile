@@ -1,8 +1,10 @@
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Wformat-security
+PGFLAG = -pg
 CGCV = -fprofile-arcs -ftest-coverage # gcov testing flags
 GCOVFILES = linked_list*gc*  
+PGFILES = *.data *.out 
 LIBS = 
 MAIN = main.c
 
@@ -17,13 +19,13 @@ all: $(BIN)
 
 # Build executable
 $(BIN): $(OBJFILES)
-	$(CC) $(CFLAGS) $(LIBS) $(CGCV) $(MAIN) -o $@ $^
+	$(CC) $(CFLAGS) $(LIBS) $(CGCV) $(PGFLAG) $(MAIN) -o $@ $^
 
 # Compile source files
 $(OBJFILES): $(CFILES)
-	$(CC) $(CFLAGS) $(CGCV) -c $^ 
+	$(CC) $(CFLAGS) $(CGCV) $(PGFLAG) -c $^ 
 
 clean:
-	rm $(BIN) $(OBJFILES) $(GCOVFILES)   
+	rm $(BIN) $(OBJFILES) $(GCOVFILES) $(PGFILES)  
 start:
 	 $(BIN)
