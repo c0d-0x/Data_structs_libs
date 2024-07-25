@@ -4,8 +4,7 @@ node_t *init_list(void) { return (node_t *)NULL; }
 
 size_t count_list(node_t *head) {
   size_t nbr_nodes = 0;
-  node_t *node;
-  node = head;
+  node_t *node = head;
 
   while (node != NULL) {
     node = node->next;
@@ -15,8 +14,7 @@ size_t count_list(node_t *head) {
 }
 
 void print_list(node_t *head, void (*f)(node_t *)) {
-  node_t *node;
-  node = head;
+  node_t *node = head;
 
   while (node != NULL) {
     (*f)(node);
@@ -96,7 +94,9 @@ node_t *break_tail(node_t **head) {
 }
 
 node_t *delete_by_position(node_t **head, size_t position) {
-
+/**
+* The node being deleted is returned to be freed by the caller.
+*/
   if ((*head) == NULL) {
     return NULL;
   }
@@ -114,6 +114,7 @@ node_t *delete_by_position(node_t **head, size_t position) {
 
   if (node != NULL && prev != NULL) {
     prev->next = node->next;
+    node->next = NULL;
     data = node;
   }
 
